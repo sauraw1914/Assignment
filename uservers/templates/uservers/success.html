@@ -1,0 +1,13 @@
+{% extends 'uservers/main.html' %} 
+{% load static %} 
+{% block content%}
+	<h3>My Posts</h3>
+	<div class="container">
+		<div class="alert alert-success" role="alert">
+			<h4 class="alert-heading">Post Created!</h4>
+			<p>Sccessfuly Created Your post</p>
+			<hr>
+			<p class="mb-0"> Cick here to see all your posts. <a href="{%url 'myposts' request.user.id %}">My Posts</a></p>
+		</div>
+	</div>
+{% endblock %}

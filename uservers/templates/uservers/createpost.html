@@ -1,0 +1,30 @@
+{% extends 'uservers/main.html' %} 
+{% load static %} 
+{% block content%}
+	<form action="" method="POST">
+		{%csrf_token%}
+		<div class="alert alert-success" role="alert">
+			Creating Post as : <strong>{{request.user.email}}</strong>
+			<p>Different id?</p>
+			<a class="btn-sm btn-warning" href="{% url 'logout' %}">Logout</a><br>
+			
+		</div>
+		{# {{form.as_p}} #}
+		<div class="container">
+			<div class="input-group ">
+				<span class="input-group-text">Write Your Post Here</span>
+				<textarea name="text" class="form-control-lg w-100" aria-label="Write Post" rows="15"  required id="id_text"></textarea>
+			</div>
+			<input class="btn btn-outline-success" type="submit" name="submit">
+		</div>
+	</form>
+	<script>
+					
+			var form_fields = document.getElementsByTagName('input')
+			form_fields[1].placeholder='text..';
+	
+				for (var field in form_fields){
+				form_fields[field].className += ' form-control'
+			}
+	</script>
+{% endblock %}

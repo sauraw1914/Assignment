@@ -1,0 +1,1 @@
+web: gunicorn tredexa.wsgi --log-file - 

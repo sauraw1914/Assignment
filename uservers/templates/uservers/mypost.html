@@ -1,0 +1,35 @@
+{% extends 'uservers/main.html' %} 
+{% load static %} 
+{% block content%}
+	
+	<div class="container d-flex flex-column mb-3">
+		<div class="col">
+			<div class="alert alert-success" role="alert">
+				Showing Posts of : <strong>{{request.user.email}}</strong>
+				<p>Not You ?</p>
+				<a class="btn-sm btn-warning" href="{% url 'logout' %}">Logout</a><br>
+				
+			</div>
+			{% for post in posts %}
+				<div class="row">
+					<center>
+						
+					<h3>My Posts</h3>
+					</center>
+					
+					
+					<div class="col-md">
+						<div class="card text-center text-white mb-4 shadow" id="total-orders">
+							<div class="card-header">
+								<h6 class="card-title" style="color: dimgray">{{post.created_at}}</h6>
+							</div>
+							<div class="card-body">
+								<p class="card-title" style="color: black;">{{post.text}}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			{%endfor%}
+		</div>
+	{% endblock %}

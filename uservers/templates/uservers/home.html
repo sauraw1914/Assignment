@@ -1,0 +1,69 @@
+{% extends 'uservers/main.html' %} 
+{% load static %}
+{% block content%}
+	
+	
+	
+
+	{% if request.user.is_authenticated %}
+	    <div class="alert alert-success" role="alert">
+		Login Successful as : <strong>{{request.user.email}}</strong>
+		<a class="btn-sm btn-warning" href="{% url 'logout' %}">Logout</a><br>
+	</div>
+	{% else %}
+	       <div class="alert alert-success" role="alert">
+		You are not logged in!
+		<a class="btn-sm btn-primary" href="{% url 'login' %}">Login</a> |
+		<a class="btn-sm btn-warning" href="{% url 'register' %}">Register</a>
+	</div>
+	{% endif %}
+	<!-- Background image -->
+	<div
+		class="p-5 text-center bg-image"
+		style="
+		background-image: url('https://tse4.mm.bing.net/th?id=OIP.XeW46FQ2cdq9TMJ63Lx69gHaEK&pid=Api&P=0&w=321&h=181');
+		height: 400px;
+		"
+		>
+		<div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+			<div class="d-flex justify-content-center align-items-center h-100">
+				<div class="text-white">
+					<h1 class="mb-3">Sauraw Diwase Assignment</h1>
+					<h4 class="mb-3">Your own post</h4>
+					<a class="btn btn-light btn-lg" href="{% url 'post'%}" role="button"
+					>Create Post</a
+					>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Background image -->
+	
+	
+	
+	
+	<center>
+	<h2 class="mb-3, mt-3">All Posts</h2>
+	</center>
+	{% for i in posts %}
+		<div class="container">
+			<div class="row">
+				<div class="col-sm">
+					<div class="col-sm">
+						<div class="card  text-center mb-4 shadow" id="total-orders">
+							<div class="card-header">
+								<h6 class="card-title" style="color: grey;"> Posted by: <strong>{{i.user.username}}</strong></h6>
+							</div>
+							<div class="card-body">
+								<p class="card-title" style="color: #121212;">{{i.text}}</p><br>
+								<p style="font-size: 11px;">Post created: <strong>{{i.created_at}}</strong></p>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{%endfor%}
+		
+{% endblock %}
